@@ -230,7 +230,7 @@
         </div>
         <a
           class="bug"
-          href="https://github.com/ontaxes/ontaxes.github.io/issues"
+          href="https://github.com/ontaxes/ontaxes/issues"
           target="_blank"
         >report bug</a>
       </div>

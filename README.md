@@ -1,6 +1,6 @@
 # Ont Axes
 
-A dApp game runs on [Ontology](https://ont.io/) Blockchain. [ontaxes.github.io](https://ontaxes.github.io/)
+A dApp game runs on [Ontology](https://ont.io/) Blockchain. [ontaxes.github.io](https://ontaxes.github.io/ontaxes/)
 
 # Introduction
 
