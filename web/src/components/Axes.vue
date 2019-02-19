@@ -994,7 +994,7 @@ a {
 .fixed_headers.records td:nth-child(2),
 .fixed_headers.records th:nth-child(2) {
   min-width: 70px;
-  padding: 0;
+  padding-left: 10px;
 }
 
 .fixed_headers.records td:nth-child(3),
