@@ -187,7 +187,7 @@
         <div class="en" v-show="helpLang == 'en'">
           <p>Welcome to this funny game! In this dApp game our goal is to take these brilliant axes away by using a little ONG.</p>
           <p>
-            Each axe has it's own rounds, in each round you'll cope with other players who also like the same axe as
+            Every axe has it's own rounds, in each round you'll cope with other players who also like the same axe as
             you.
           </p>
           <p>

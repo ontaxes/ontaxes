@@ -6,7 +6,7 @@ A dApp game runs on [Ontology](https://ont.io/) Blockchain. [ontaxes.github.io](
 
 Welcome to this funny game! In this dApp game our goal is to take these brilliant axes away by using a little ONG.
 
-Each axe has it's own rounds, in each round you'll cope with other players who also like the same axe as you.
+Every axe has it's own rounds, in each round you'll cope with other players who also like the same axe as you.
 
 In each round, a axe is divided averagely into many parts, you'll deposit ONG to collect those parts. when all those parts are collected by players, the round goes into award process. Only one part could represent the axe and the owner of that part could take away the axe.
 
