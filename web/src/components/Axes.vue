@@ -180,9 +180,9 @@
     >
       <div class="content">
         <div class="lang">
-          <a href="#" :class="{active: helpLang == 'en'}" @click="helpLang = 'en'">EN</a>
+          <a href="#" :class="{active: helpLang == 'en'}" @click.prevent="helpLang = 'en'">EN</a>
           |
-          <a href="#" :class="{active: helpLang == 'cn'}" @click="helpLang = 'cn'">CN</a>
+          <a href="#" :class="{active: helpLang == 'cn'}" @click.prevent="helpLang = 'cn'">CN</a>
         </div>
         <div class="en" v-show="helpLang == 'en'">
           <p>Welcome to this funny game! In this dApp game our goal is to take these brilliant axes away by using a little ONG.</p>
