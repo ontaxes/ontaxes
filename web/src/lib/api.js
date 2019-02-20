@@ -1,7 +1,7 @@
 import { client } from "ontology-dapi";
 import { utils, ScriptBuilder, WebsocketClient } from "ontology-ts-sdk";
 
-const contractHash = "323378f4a7360f73652641f3b6d8541cd1ae2aae";
+const contractHash = "2fe039d55d6b3bbe13bbb1ce3326b9a43848e08d";
 
 client.registerClient({});
 

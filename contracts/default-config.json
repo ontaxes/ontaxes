@@ -1,25 +1,26 @@
 {
 	"deployConfig":{
-		"author":"the author of contract",
-		"desc":"a description for your contract",
-		"email":"email address",
+		"author":"ontoaxes",
+		"desc":"A game shows some brilliant axes",
+		"email":"ontaxes0@gmail.com",
 		"filePath":"/Users/hsy/ws/axes/contracts/default-config.json",
 		"gasLimit":31000000,
 		"gasPrice":500,
-		"name":"contract name",
+		"name":"ontoaxes",
 		"needStorage":true,
-		"payer":"AUr5QUfeBADq6BMY6Tp5yuMsUNGpsD7nLZ",
-		"version":"contract version"
+		"payer":"AdS9RHQxeReZyiqGanC2NGFDRngRVkJ9qm",
+		"version":"1.0"
 	},
 	"password":{
 		"AecaeSEBkt5GcBCxwz1F41TvdjX3dnKBkJ":"password",
 		"AUr5QUfeBADq6BMY6Tp5yuMsUNGpsD7nLZ":"password",
-		"AQvZMDecMoCi2y4V6QKdJBtHW1eV7Vbaof":"password"
+		"AQvZMDecMoCi2y4V6QKdJBtHW1eV7Vbaof":"password",
+		"AdS9RHQxeReZyiqGanC2NGFDRngRVkJ9qm":""
 	},
-	"defaultWallet":"/Users/hsy/PycharmProjects/alchemy/wallet/wallet.json",
+	"defaultWallet":"/Users/hsy/ws/axes/wallet/axesGM.json",
 	"invokeConfig":{
 		"gasLimit":20000,
-		"defaultPayer":"AUr5QUfeBADq6BMY6Tp5yuMsUNGpsD7nLZ",
+		"defaultPayer":"AdS9RHQxeReZyiqGanC2NGFDRngRVkJ9qm",
 		"filePath":"/Users/hsy/ws/axes/contracts/default-config.json",
 		"gasPrice":500
 	}

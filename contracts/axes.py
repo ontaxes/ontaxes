@@ -9,7 +9,7 @@ from ontology.interop.System.Action import *
 BuyAxeAction = RegisterAction('buy_axe', 'key', 'sn', 'buyer', 'bid', 'tickets', 'cur_amount')
 AwardAction = RegisterAction('award', 'axe_key', 'axe_sn', 'to_addr', 'bonus', 'lucky_number')
 
-GM = Base58ToAddress('AUr5QUfeBADq6BMY6Tp5yuMsUNGpsD7nLZ')
+GM = Base58ToAddress('AdS9RHQxeReZyiqGanC2NGFDRngRVkJ9qm')
 
 # ONG Big endian Script Hash: 0x0200000000000000000000000000000000000000
 OngContract = Base58ToAddress("AFmseVrdL9f9oyCzZefL9tG6UbvhfRZMHJ")

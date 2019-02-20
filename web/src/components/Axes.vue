@@ -385,9 +385,9 @@ export default {
       this.bidMethod = "cyano";
       await Api.initContractIfNeeded();
       await this.loadeAxes();
-      await this.setupWs();
 
       loader.hide();
+      await this.setupWs();
     },
     updateLocalAxe(axe) {
       axe = map2obj(axe);
@@ -402,14 +402,21 @@ export default {
       this.curAxe = this.axes[0];
     },
     async setupWs() {
-      this.ws = new WsClient();
-      await this.ws.connect();
-      this.ws.onNotify = async (action, data) => {
-        if (["buy_axe", "award"].indexOf(action) !== -1) {
-          const axeKey = hex2str(data[0]);
-          await this.refreshAxe(axeKey);
-        }
-      };
+      try {
+        this.ws = new WsClient();
+        await this.ws.connect();
+        this.ws.onNotify = async (action, data) => {
+          if (["buy_axe", "award"].indexOf(action) !== -1) {
+            const axeKey = hex2str(data[0]);
+            await this.refreshAxe(axeKey);
+          }
+        };
+      } catch (e) {
+        this.$toasted.error("Notification Service Unavailable", {
+          position: "top-center",
+          duration: 3000
+        });
+      }
     },
     getLocalAxe(key) {
       for (let i = 0, len = this.axes.length; i < len; i++) {
