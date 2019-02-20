@@ -1198,6 +1198,10 @@ table.past-result td {
   padding-bottom: 10px;
 }
 
+.disabled-reason p {
+  line-height: 20px;
+}
+
 .toasted.toasted-primary.error a {
   color: #fff;
 }
