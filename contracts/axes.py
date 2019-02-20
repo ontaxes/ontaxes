@@ -27,6 +27,12 @@ def Main(operation, args):
         if len(args) != 3:
             return False
         return upsert_axe(args[0], args[1], args[2])
+    if operation == 'query_fee_rate':
+        return query_fee_rate()
+    if operation == 'set_fee_rate':
+        if len(args) != 1:
+            return False
+        return set_fee_rate(args[0])
     if operation == 'query_axes':
         return query_axes()
     if operation == 'query_axe':
@@ -139,6 +145,18 @@ def get_axe(key):
             return axe
 
     return None
+
+
+def query_fee_rate():
+    return Get(ctx, k_fee_rate())
+
+
+def set_fee_rate(rate):
+    RequireWitness(GM)
+    if rate < 3 or rate > 20:
+        return False
+    Put(ctx, k_fee_rate(), rate)
+    return True
 
 
 def query_axes():

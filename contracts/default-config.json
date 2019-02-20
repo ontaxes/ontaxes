@@ -3,7 +3,7 @@
 		"author":"the author of contract",
 		"desc":"a description for your contract",
 		"email":"email address",
-		"filePath":"/Users/hsy/PycharmProjects/alchemy/contracts/default-config.json",
+		"filePath":"/Users/hsy/ws/axes/contracts/default-config.json",
 		"gasLimit":31000000,
 		"gasPrice":0,
 		"name":"contract name",

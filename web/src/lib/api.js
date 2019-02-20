@@ -1,7 +1,7 @@
 import { client } from "ontology-dapi";
 import { utils, ScriptBuilder, WebsocketClient } from "ontology-ts-sdk";
 
-const contractHash = "4f1e06b2d875520526eaddfb7142cba44f3c77f3";
+const contractHash = "323378f4a7360f73652641f3b6d8541cd1ae2aae";
 
 client.registerClient({});
 
@@ -10,8 +10,13 @@ export const decode = stuff => {
 
   if (stuff === "00") return false;
   if (stuff === "01") return true;
-  const sr = new utils.StringReader(stuff);
-  return ScriptBuilder.deserializeItem(sr);
+
+  try {
+    const sr = new utils.StringReader(stuff);
+    return ScriptBuilder.deserializeItem(sr);
+  } catch (e) {
+    return stuff;
+  }
 };
 
 export class WsClient {
@@ -95,7 +100,7 @@ export class Api {
 
   static async upsertAxe(axe) {
     return this.invoke("upsert_axe", [
-      { type: "String", value: axe.name },
+      { type: "String", value: axe.key },
       { type: "Integer", value: axe.partPrice },
       { type: "Integer", value: axe.partCount }
     ]);
@@ -136,6 +141,14 @@ export class Api {
     ]);
   }
 
+  static async queryFeeRate() {
+    return this.invokeRead("query_fee_rate", []);
+  }
+
+  static async setFeeRate(rate) {
+    return this.invoke("set_fee_rate", [{ type: "Integer", value: rate }]);
+  }
+
   static async invokeRead(method, params) {
     const res = await client.api.smartContract.invokeRead({
       scriptHash: contractHash,
@@ -158,3 +171,7 @@ export class Api {
     return decode(res);
   }
 }
+
+window.__upsertAxe = axe => Api.upsertAxe(axe);
+window.__queryFeeRate = () => Api.queryFeeRate();
+window.__setFeeRate = rate => Api.setFeeRate(rate);
