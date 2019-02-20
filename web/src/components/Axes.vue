@@ -1057,7 +1057,7 @@ a {
 
 .fixed_headers.records td:nth-child(2),
 .fixed_headers.records th:nth-child(2) {
-  min-width: 70px;
+  min-width: 50px;
   padding-left: 10px;
 }
 
