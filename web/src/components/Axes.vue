@@ -28,9 +28,13 @@
     >
       <h3>Wow such a brilliant {{ curAxe.key }} axe I can't wait to take it!</h3>
       <div class="bid-method">
-        <div class="method" :class="{disabled: !isCyanoWalletEnable}">
+        <div
+          class="method"
+          :class="{disabled: isBidMethodDisabled('cyano')}"
+          @click="showDisabledReason('cyano')"
+        >
           <input
-            :disabled="!isCyanoWalletEnable"
+            :disabled="isBidMethodDisabled('cyano')"
             type="radio"
             name="bid-method"
             id="bid-method-cyano"
@@ -40,9 +44,14 @@
           <label for="bid-method-cyano">Cyano Wallet</label>
         </div>
         <i></i>
-        <div class="method">
+        <div
+          class="method"
+          :class="{disabled: isBidMethodDisabled('onto')}"
+          @click="showDisabledReason('onto')"
+        >
           <input
             type="radio"
+            :disabled="isBidMethodDisabled('onto')"
             name="bid-method"
             id="bid-method-onto"
             value="onto"
@@ -182,7 +191,11 @@
         <div class="lang">
           <a href="#" :class="{active: helpLang == 'en'}" @click.prevent="helpLang = 'en'">EN</a>
           |
-          <a href="#" :class="{active: helpLang == 'cn'}" @click.prevent="helpLang = 'cn'">CN</a>
+          <a
+            href="#"
+            :class="{active: helpLang == 'cn'}"
+            @click.prevent="helpLang = 'cn'"
+          >CN</a>
         </div>
         <div class="en" v-show="helpLang == 'en'">
           <p>Welcome to this funny game! In this dApp game our goal is to take these brilliant axes away by using a little ONG.</p>
@@ -228,11 +241,34 @@
           </p>
           <p>最后，斧头会被拥有和幸运号码相同的部件号的玩家带走。奖励就是斧头的 ONG 减去游戏费用。游戏费用的费率为 3%。</p>
         </div>
-        <a
-          class="bug"
-          href="https://github.com/ontaxes/ontaxes/issues"
-          target="_blank"
-        >report bug</a>
+        <a class="bug" href="https://github.com/ontaxes/ontaxes/issues" target="_blank">report bug</a>
+      </div>
+    </modal>
+
+    <modal
+      name="disabled-reason-cyano"
+      :classes="['disabled-reason', 'cyano']"
+      :width="500"
+      :height="'auto'"
+      transition="nice-modal-fade"
+    >
+      <div>cyano</div>
+    </modal>
+
+    <modal
+      name="disabled-reason-onto"
+      :classes="['disabled-reason','onto']"
+      :width="500"
+      :height="'auto'"
+      transition="nice-modal-fade"
+    >
+      <div>
+        <h3>This method is not currently supported</h3>
+        <p>
+          Deposit via
+          <a target="_blank" href="https://onto.app/">ONTO</a> QRCode sanning is not currently supported, but will be avaiable ASAP after the ONTO's official
+          upgrades, stay tuned.
+        </p>
       </div>
     </modal>
   </div>
@@ -294,7 +330,11 @@ export default {
       shakingInfo: false,
       shakingInfoKey: "",
       helpLang: "en",
-      bidQRCode: ""
+      bidQRCode: "",
+      disabledReason: {
+        cyano: "disabled-reason-cyano",
+        onto: "disabled-reason-onto"
+      }
     };
   },
   filters: {
@@ -330,8 +370,19 @@ export default {
       });
 
       this.isCyanoWalletEnable = await Api.isCyanoWalletEnable();
-      if (this.isCyanoWalletEnable) this.bidMethod = "cyano";
+      if (!this.isCyanoWalletEnable) {
+        loader.hide();
+        this.$toasted.error(
+          "<a href='https://chrome.google.com/webstore/detail/cyano-wallet/dkdedlpgdmmkkfjabffeganieamfklkm' target='_blank'>" +
+            "Cyano Wallet</a>&nbsp;is required to play this game.",
+          {
+            position: "top-center"
+          }
+        );
+        return;
+      }
 
+      this.bidMethod = "cyano";
       await Api.initContractIfNeeded();
       await this.loadeAxes();
       await this.setupWs();
@@ -547,6 +598,19 @@ export default {
     },
     showHelp() {
       this.$modal.show("help");
+    },
+    isBidMethodDisabled(method) {
+      if (method === "cyano") {
+        return !this.isCyanoWalletEnable;
+      }
+      if (method === "onto") {
+        return true;
+      }
+    },
+    showDisabledReason(method) {
+      if (this.isBidMethodDisabled(method)) {
+        this.$modal.show(this.disabledReason[method]);
+      }
     }
   }
 };
@@ -747,7 +811,7 @@ export default {
 
 .choose-bid-plan .bid-method .method.disabled > * {
   color: #666;
-  cursor: not-allowed;
+  cursor: help;
 }
 
 .bid-qrcode {
@@ -1121,5 +1185,20 @@ table.past-result td:first-child {
 
 table.past-result td {
   border-bottom: 1px solid #d8d8d8;
+}
+
+.disabled-reason {
+  background-color: #fff;
+  border-radius: 3px;
+  padding: 10px 20px;
+}
+
+.disabled-reason h3 {
+  text-align: center;
+  padding-bottom: 10px;
+}
+
+.toasted.toasted-primary.error a {
+  color: #fff;
 }
 </style>

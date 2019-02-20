@@ -1,5 +1,5 @@
 {
-	"defaultNet":"privateNet",
+	"defaultNet":"testNet",
 	"networks":{
 		"privateNet":{
 			"host":"http://127.0.0.1",

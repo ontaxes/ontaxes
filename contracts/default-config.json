@@ -5,7 +5,7 @@
 		"email":"email address",
 		"filePath":"/Users/hsy/ws/axes/contracts/default-config.json",
 		"gasLimit":31000000,
-		"gasPrice":0,
+		"gasPrice":500,
 		"name":"contract name",
 		"needStorage":true,
 		"payer":"AUr5QUfeBADq6BMY6Tp5yuMsUNGpsD7nLZ",
@@ -20,7 +20,7 @@
 	"invokeConfig":{
 		"gasLimit":20000,
 		"defaultPayer":"AUr5QUfeBADq6BMY6Tp5yuMsUNGpsD7nLZ",
-		"filePath":"/Users/hsy/PycharmProjects/alchemy/contracts/default-config.json",
-		"gasPrice":0
+		"filePath":"/Users/hsy/ws/axes/contracts/default-config.json",
+		"gasPrice":500
 	}
 }
